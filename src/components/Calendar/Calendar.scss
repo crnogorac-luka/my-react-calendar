@@ -1,0 +1,10 @@
+.height-600 {
+    height: 600px;
+}
+
+.custom-event-wrapper {
+    //padding: 1rem;
+    .rbc-event, .rbc-day-slot .rbc-background-event {
+        height: 100%;
+    }
+}

@@ -8,12 +8,17 @@ const events = [
   {
     start: new Date(),
     end: new Date(new Date().getTime() + 3600000),
-    title: 'Some Event',
+    title: "Event 1"
   },
+  {
+    start: new Date(new Date().getTime() + 86400000),
+    end: new Date(new Date().getTime() + 86400000 + 3600000),
+    title: "Event 2"
+  }
 ];
 
 const App = () => {
-  const [selectedEvents, setSelectedEvents] = useState(events);
+  const [selectedEvents] = useState(events);
 
   return (
     <div className="App">
