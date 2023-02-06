@@ -4,7 +4,8 @@
 
 .custom-event-wrapper {
     //padding: 1rem;
+    
     .rbc-event, .rbc-day-slot .rbc-background-event {
-        height: 100%;
+        height: max-content;
     }
 }
