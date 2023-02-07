@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
+
+import ArrowLeftRoundedIcon from '@mui/icons-material/ArrowLeftRounded';
+import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded';
+
 import moment from "moment";
 import fetchResults from "../../services/api/CommitAPI";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -38,6 +42,23 @@ const Calendar = (props) => {
     }
   }, [location]);
 
+
+  const CustomToolbar = (props) => {
+    return (
+      <div className="toolbar">
+        <ArrowLeftRoundedIcon fontSize="large" className="back-button" onClick={props.onNavigate.bind(null, 'PREV')}>
+          Back
+        </ArrowLeftRoundedIcon>
+        <span className="current-month">
+          {props.label}
+        </span>
+        <ArrowRightRoundedIcon fontSize="large" className="next-button" onClick={props.onNavigate.bind(null, 'NEXT')}>
+          Next
+        </ArrowRightRoundedIcon>
+      </div>
+    );
+  };
+
   return (
     <BigCalendar
       selectable
@@ -50,7 +71,8 @@ const Calendar = (props) => {
       components={{
         eventWrapper: (props) => (
           <div className="custom-event-wrapper">{props.children}</div>
-        )
+        ),
+        toolbar: CustomToolbar
       }}
       className="height-600"
     />
