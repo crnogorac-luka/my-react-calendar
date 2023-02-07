@@ -1,11 +1,26 @@
+@import "../../styles/variables.scss";
+
 .height-600 {
-    height: 600px;
+  height: 600px;
+  width: 48rem;
+}
+
+.rbc-month-header {
+  .rbc-header {
+    height: 2rem;
+    background-color: $primaryColor;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .custom-event-wrapper {
-    //padding: 1rem;
-    
-    .rbc-event, .rbc-day-slot .rbc-background-event {
-        height: max-content;
-    }
+  //padding: 1rem;
+
+  .rbc-event,
+  .rbc-day-slot .rbc-background-event {
+    height: max-content;
+  }
 }

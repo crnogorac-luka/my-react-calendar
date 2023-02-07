@@ -12,6 +12,7 @@
     "react": "^18.2.0",
     "react-big-calendar": "^1.6.3",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "sass": "^1.58.0",
     "sass-loader": "^13.2.0",
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@octokit/core": "^4.2.0"
   }
 }
