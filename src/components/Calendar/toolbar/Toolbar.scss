@@ -1,0 +1,41 @@
+@import "../../../styles/variables.scss";
+
+.rbc-month-header {
+  .rbc-header {
+    height: 2rem;
+    background-color: $primaryColor;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  .month-changer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .back-button,
+    .next-button {
+      border-radius: 50%;
+      fill: $darkColor;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .back-button:hover,
+    .next-button:hover {
+      background-color: $primaryColor;
+      cursor: pointer;
+    }
+
+    span {
+      color: $darkColor;
+      font-weight: bold;
+    }
+  }
+}
