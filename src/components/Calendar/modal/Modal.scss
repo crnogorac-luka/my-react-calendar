@@ -1,0 +1,29 @@
+@import "../../../styles/variables.scss";
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: $primaryColor;
+  padding: 2rem;
+  border-radius: 1rem;
+
+  label {
+    font-weight: bold;
+    color: white;
+  }
+
+  .close-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+
+    &:hover {
+        cursor: pointer;
+        fill: white;
+        transform: scale(1.2);
+    }
+  }
+}

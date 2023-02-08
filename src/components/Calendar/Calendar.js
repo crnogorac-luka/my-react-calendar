@@ -32,7 +32,7 @@ const Calendar = (props) => {
           start: new Date(commit.commit.author.date),
           end: new Date(commit.commit.author.date),
           committer: commit.commit.committer.name,
-          commitUrl: commit.commit.url
+          commitUrl: commit.html_url
         }))
       );
     };
@@ -69,6 +69,11 @@ const Calendar = (props) => {
 
   return (
     <div>
+      <Modal
+        isOpen={modalOpen}
+        event={eventData}
+        onClose={handleCloseModal}
+      />
     <BigCalendar
       selectable
       date={selectedDate}
@@ -81,18 +86,11 @@ const Calendar = (props) => {
       startAccessor="start"
       endAccessor="end"
       components={{
-        eventWrapper: (props) => (
-          <div className="custom-event-wrapper">{props.children}</div>
-        ),
         toolbar: Toolbar,
       }}
       className="height-600"
     />
-    <Modal
-        isOpen={modalOpen}
-        event={eventData}
-        onClose={handleCloseModal}
-      />
+    
       </div>
   );
 };

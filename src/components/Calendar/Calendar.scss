@@ -16,11 +16,6 @@
   }
 }
 
-.custom-event-wrapper {
-  //padding: 1rem;
-
-  .rbc-event,
-  .rbc-day-slot .rbc-background-event {
-    height: max-content;
-  }
+.rbc-row-content {
+  z-index: auto;
 }
