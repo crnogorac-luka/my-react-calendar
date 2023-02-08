@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import ReactModal from "react-modal";
 import "./Modal.scss";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";

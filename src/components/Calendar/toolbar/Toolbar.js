@@ -7,7 +7,7 @@ import "./Toolbar.scss";
 
 import { Navigate } from "react-big-calendar";
 
-const Toolbar = ({ date, onNavigate, onView, view }) => {
+const Toolbar = ({ date, onNavigate, onView}) => {
   const handlePrevClick = () => {
     onNavigate(Navigate.PREVIOUS);
   };
@@ -24,7 +24,7 @@ const Toolbar = ({ date, onNavigate, onView, view }) => {
           className="back-button"
           onClick={handlePrevClick}
         ></ArrowLeftRoundedIcon>
-        <span className="current-month" onClick={() => onView('month')}>
+        <span className="current-month" onClick={() => onView("month")}>
           {moment(date).format("MMMM YYYY")}
         </span>
         <ArrowRightRoundedIcon
@@ -33,7 +33,6 @@ const Toolbar = ({ date, onNavigate, onView, view }) => {
           onClick={handleNextClick}
         ></ArrowRightRoundedIcon>
       </div>
-      
     </div>
   );
 };
