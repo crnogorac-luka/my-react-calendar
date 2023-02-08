@@ -19,3 +19,23 @@
 .rbc-row-content {
   z-index: auto;
 }
+
+.rbc-event {
+  background-color: $primaryColor;
+}
+
+.rbc-event.rbc-selected {
+  background-color: $primaryColorDark;
+}
+
+.rbc-show-more {
+  color: $primaryColorDark;
+}
+
+.rbc-today {
+  background-color: $primaryColorLight
+}
+
+.rbc-day-slot .rbc-event {
+  border: 0;
+}
