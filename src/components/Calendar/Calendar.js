@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
+import {Views} from "react-big-calendar";
 import Toolbar from "./toolbar/Toolbar";
 
 
@@ -15,6 +16,7 @@ const localizer = momentLocalizer(moment);
 const Calendar = (props) => {
   const [calendarEvents, setCalendarEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(moment());
+  const [currentView, setCurrentView] = useState(Views.MONTH);
 
   const location = useLocation();
 
@@ -41,8 +43,12 @@ const Calendar = (props) => {
     }
   }, [location]);
 
-  const handleNavigate = (newDate, view) => {
+  const handleNavigate = (newDate) => {
     setSelectedDate(newDate);
+  };
+
+  const handleViewChange = (view) => {
+    setCurrentView(view);
   };
 
   return (
@@ -50,6 +56,8 @@ const Calendar = (props) => {
       selectable
       date={selectedDate}
       onNavigate={handleNavigate}
+      onView={handleViewChange}
+      view={currentView}
       localizer={localizer}
       events={calendarEvents}
       startAccessor="start"

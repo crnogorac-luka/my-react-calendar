@@ -2,13 +2,12 @@ import React from "react";
 import moment from "moment";
 import ArrowLeftRoundedIcon from "@mui/icons-material/ArrowLeftRounded";
 import ArrowRightRoundedIcon from "@mui/icons-material/ArrowRightRounded";
-import { white } from '@mui/material/colors';
 
 import "./Toolbar.scss";
 
 import { Navigate } from "react-big-calendar";
 
-const Toolbar = ({ date, onNavigate }) => {
+const Toolbar = ({ date, onNavigate, onView, view }) => {
   const handlePrevClick = () => {
     onNavigate(Navigate.PREVIOUS);
   };
@@ -25,7 +24,7 @@ const Toolbar = ({ date, onNavigate }) => {
           className="back-button"
           onClick={handlePrevClick}
         ></ArrowLeftRoundedIcon>
-        <span className="current-month">
+        <span className="current-month" onClick={() => onView('month')}>
           {moment(date).format("MMMM YYYY")}
         </span>
         <ArrowRightRoundedIcon
@@ -34,6 +33,7 @@ const Toolbar = ({ date, onNavigate }) => {
           onClick={handleNextClick}
         ></ArrowRightRoundedIcon>
       </div>
+      
     </div>
   );
 };
