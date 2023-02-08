@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
-import {Views} from "react-big-calendar";
+import { Views } from "react-big-calendar";
 import Toolbar from "./toolbar/Toolbar";
-
-
+import Modal from "./modal/Modal";
 
 import moment from "moment";
 import fetchResults from "../../services/api/CommitAPI";
@@ -14,9 +13,12 @@ import "./Calendar.scss";
 const localizer = momentLocalizer(moment);
 
 const Calendar = (props) => {
+  // States
   const [calendarEvents, setCalendarEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(moment());
   const [currentView, setCurrentView] = useState(Views.MONTH);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [eventData, setEventData] = useState({});
 
   const location = useLocation();
 
@@ -29,6 +31,8 @@ const Calendar = (props) => {
           title: commit.commit.message,
           start: new Date(commit.commit.author.date),
           end: new Date(commit.commit.author.date),
+          committer: commit.commit.committer.name,
+          commitUrl: commit.commit.url
         }))
       );
     };
@@ -43,6 +47,8 @@ const Calendar = (props) => {
     }
   }, [location]);
 
+  // Handlers
+
   const handleNavigate = (newDate) => {
     setSelectedDate(newDate);
   };
@@ -51,7 +57,18 @@ const Calendar = (props) => {
     setCurrentView(view);
   };
 
+  const handleEventClick = (event) => {
+    setEventData(event);
+    console.log(event);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
+    <div>
     <BigCalendar
       selectable
       date={selectedDate}
@@ -60,16 +77,23 @@ const Calendar = (props) => {
       view={currentView}
       localizer={localizer}
       events={calendarEvents}
+      onSelectEvent={handleEventClick}
       startAccessor="start"
       endAccessor="end"
       components={{
         eventWrapper: (props) => (
           <div className="custom-event-wrapper">{props.children}</div>
         ),
-        toolbar: Toolbar
+        toolbar: Toolbar,
       }}
       className="height-600"
     />
+    <Modal
+        isOpen={modalOpen}
+        event={eventData}
+        onClose={handleCloseModal}
+      />
+      </div>
   );
 };
 
